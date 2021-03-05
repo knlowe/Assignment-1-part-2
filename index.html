@@ -31,12 +31,19 @@
         var canvas = document.getElementById('myCanvas'); //getting mycanvas from html and defining it as canvas
         var ctx = canvas.getContext('2d'); //defining context
 
-        // function colourCircle(x, y, r, sAngle, eAngle, c, f) {  //circles without stroke
-        //     ctx.beginPath(); 
-        //     ctx.arc(x,y,r,sAngle,eAngle, c);
-        //     ctx.fillStyle = f;
-        //     ctx.fill();
-        // }
+        function colourCircle(x, y, r, sAngle, eAngle, c, f) {  //circles without stroke
+            ctx.beginPath(); 
+            ctx.arc(x,y,r,sAngle,eAngle, c);
+            ctx.fillStyle = f;
+            ctx.fill();
+        }
+
+        function rect(x,y,w,h,c) {
+            ctx.beginPath(); //shadow rect
+            ctx.rect(x,y,w,h);
+            ctx.fillStyle = c;
+            ctx.fill();
+        }
 
         // ctx.beginPath();
         // ctx.rect(0,0,1500,750);
@@ -55,6 +62,47 @@
         // ctx.fillStyle = "#fec93f";
         // ctx.fill();
         // ctx.closePath();
+
+
+        //TAIL
+        rect(1075,365,75,20, "#0e3441"); //tail rectangle        
+
+        colourCircle(1150,375,10,1.57,1.5 * Math.PI, true, "#0e3441");  //tail end curve using semi circle
+
+        //STRIPES
+        function stripe(x) { //making a stripe function so i can create one stripe and just change the x for the other one
+            rect(x,249,75,252, "#0e3441"); 
+        }
+
+        stripe(800); //calling stripe function twice for both of the stripes
+        stripe(650);
+
+
+        //EYE
+        colourCircle(540,350,25,0,2 * Math.PI, false, "#0e3441"); //full circle for the eye
+
+        
+        //SHADOW 
+        rect(600,600,350,50, "#710a4f"); //rectangle for the middle of the shadow
+
+        colourCircle(950,625,25,1.57,1.5 * Math.PI, true, "#710a4f"); //right curve of the shadow using semi circle
+        colourCircle(600,625,25,1.57,1.5 * Math.PI, false, "#710a4f"); //left curve of the shadow using semi circle
+
+
+        //GLINT
+        function glint(x,c) { // function making one section of the glint so i can just change the x and colour
+            rect(x,275,75,50, c);
+        }
+
+        glint(650, "#8699a0"); //the 4 sections of the glint with different colours so it looks like it has opacity
+        glint(725, "#ffe49f");
+        glint(800, "#8699a0");
+        glint(875, "#ffe49f");
+
+        colourCircle(950,300,25,1.57,1.5 * Math.PI, true, "#87999f"); //right curve of the shadow using semi circle
+        colourCircle(650,300,25,1.57,1.5 * Math.PI, false, "#ffe49f"); //left curve of the shadow using semi circle
+
+
     </script>
     
 </body>
