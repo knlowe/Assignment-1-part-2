@@ -10,18 +10,21 @@
         #myCanvas { /*giving my canvas some styling*/
             border: 5px solid #9b216c;
             border-style: double;
-            margin-left: 10%;
+            margin: 0 auto;
+            display: block;
+            background-color: #9b216c;
         }
 
         h1 {
             text-align: center;
+            font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
         }
     </style>
 
 </head>
 <body>
     
-    <h1> Bee</h1>
+    <h1>Bee</h1>
 
     <canvas id="myCanvas" width="1500" height="750"> <!--Creating a canvas and making it 100 pixel wide and 500 pixel high-->
         Your browser does not support the html canvas tag 
@@ -38,10 +41,26 @@
             ctx.fill();
         }
 
+        function makeArc(x, y, r, sAngle, eAngle, f) {  //circles without stroke
+            ctx.beginPath(); 
+            ctx.arc(x,y,r,sAngle,eAngle);
+            ctx.fillStyle = f;
+            ctx.fill();
+        }
+
+        // Wings
+        
+        makeArc(620, 160, 110, 2 * Math.PI, false, "#f498c1"); // left wing
+        makeArc(840, 160, 110, 2 * Math.PI, false, "#f498c1"); // right wing
+
         ctx.beginPath();
-        ctx.rect(0,0,1500,750);
-        ctx.fillStyle = "#9b216c";
-        ctx.fill();
+        ctx.rect(640,165,200,160);
+        ctx.fillStyle = "#f498c1";
+        ctx.fill(); // connector rectangle for the wings
+        
+        makeArc(630, 165, 100, 1*Math.PI,1.5*Math.PI, "#facfe2"); // wing glow
+        makeArc(632, 167, 95, 2*Math.PI, false, "#f498c1"); // wing glow mask
+
 
         colourCircle(550,375,126,1.57,1.5 * Math.PI, false, "#fec93f"); //left body curve
         colourCircle(950,375,126,1.57,1.5 * Math.PI, true, "#0e3441");  //right body curve
@@ -55,6 +74,7 @@
         ctx.fillStyle = "#fec93f";
         ctx.fill();
         ctx.closePath();
+
     </script>
     
 </body>
