@@ -48,6 +48,38 @@
             ctx.fill();
         }
 
+        function makeArc(x, y, r, sAngle, eAngle, f) {  //circles without stroke
+            ctx.beginPath(); 
+            ctx.arc(x,y,r,sAngle,eAngle);
+            ctx.fillStyle = f;
+            ctx.fill();
+        }
+
+        // Wings
+        
+        makeArc(620, 160, 110, 2 * Math.PI, false, "#f498c1"); // left wing
+        makeArc(840, 160, 110, 2 * Math.PI, false, "#f498c1"); // right wing
+
+        ctx.beginPath();
+        ctx.rect(640,165,200,160);
+        ctx.fillStyle = "#f498c1";
+        ctx.fill(); // connector rectangle for the wings
+        
+        makeArc(630, 165, 100, 1*Math.PI,1.5*Math.PI, "#facfe2"); // wing glow
+        makeArc(632, 167, 95, 2*Math.PI, false, "#f498c1"); // wing glow mask
+
+        colourCircle(550,375,126,1.57,1.5 * Math.PI, false, "#fec93f"); //left body curve
+        colourCircle(950,375,126,1.57,1.5 * Math.PI, true, "#0e3441");  //right body curve
+
+        ctx.beginPath(); //main body
+        ctx.moveTo(550,249);
+        ctx.lineTo(950,249);
+        ctx.lineTo(950,501);
+        ctx.lineTo(550,501);
+        ctx.lineTo(550,250);
+        ctx.fillStyle = "#fec93f";
+        ctx.fill();
+
         //TAIL
         rect(1075,365,75,20, "#0e3441"); //tail rectangle        
 
@@ -85,37 +117,6 @@
 
         colourCircle(950,300,25,1.57,1.5 * Math.PI, true, "#87999f"); //right curve of the shadow using semi circle
         colourCircle(650,300,25,1.57,1.5 * Math.PI, false, "#ffe49f"); //left curve of the shadow using semi circle
-        function makeArc(x, y, r, sAngle, eAngle, f) {  //circles without stroke
-            ctx.beginPath(); 
-            ctx.arc(x,y,r,sAngle,eAngle);
-            ctx.fillStyle = f;
-            ctx.fill();
-        }
-
-        // Wings
-        
-        makeArc(620, 160, 110, 2 * Math.PI, false, "#f498c1"); // left wing
-        makeArc(840, 160, 110, 2 * Math.PI, false, "#f498c1"); // right wing
-
-        ctx.beginPath();
-        ctx.rect(640,165,200,160);
-        ctx.fillStyle = "#f498c1";
-        ctx.fill(); // connector rectangle for the wings
-        
-        makeArc(630, 165, 100, 1*Math.PI,1.5*Math.PI, "#facfe2"); // wing glow
-        makeArc(632, 167, 95, 2*Math.PI, false, "#f498c1"); // wing glow mask
-
-        colourCircle(550,375,126,1.57,1.5 * Math.PI, false, "#fec93f"); //left body curve
-        colourCircle(950,375,126,1.57,1.5 * Math.PI, true, "#0e3441");  //right body curve
-
-        ctx.beginPath(); //main body
-        ctx.moveTo(550,249);
-        ctx.lineTo(950,249);
-        ctx.lineTo(950,501);
-        ctx.lineTo(550,501);
-        ctx.lineTo(550,250);
-        ctx.fillStyle = "#fec93f";
-        ctx.fill();
 
 
         // Legs
