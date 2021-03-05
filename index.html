@@ -61,7 +61,6 @@
         makeArc(630, 165, 100, 1*Math.PI,1.5*Math.PI, "#facfe2"); // wing glow
         makeArc(632, 167, 95, 2*Math.PI, false, "#f498c1"); // wing glow mask
 
-
         colourCircle(550,375,126,1.57,1.5 * Math.PI, false, "#fec93f"); //left body curve
         colourCircle(950,375,126,1.57,1.5 * Math.PI, true, "#0e3441");  //right body curve
 
@@ -73,7 +72,26 @@
         ctx.lineTo(550,250);
         ctx.fillStyle = "#fec93f";
         ctx.fill();
-        ctx.closePath();
+
+
+        // Legs
+
+        ctx.beginPath();
+        // left leg
+        ctx.moveTo(680,490);
+        ctx.lineTo(750, 580);
+        // right leg
+        ctx.moveTo(850,490);
+        ctx.lineTo(920, 580);
+        // stroke styles
+        ctx.lineWidth =  25;
+        ctx.strokeStyle = "black";
+        ctx.stroke();
+        // round the legs
+        makeArc(750, 580, 12, 2*Math.PI, false, "#000");
+        makeArc(920, 580, 12, 2*Math.PI, false, "#000");
+
+
 
     </script>
     
