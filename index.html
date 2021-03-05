@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bee</title>
+
+    <style> 
+        #myCanvas { /*giving my canvas some styling*/
+            border: 5px solid #9b216c;
+            border-style: double;
+            margin-left: 10%;
+        }
+
+        h1 {
+            text-align: center;
+        }
+    </style>
+
+</head>
+<body>
+    
+    <h1> Bee</h1>
+
+    <canvas id="myCanvas" width="1500" height="750"> <!--Creating a canvas and making it 100 pixel wide and 500 pixel high-->
+        Your browser does not support the html canvas tag 
+    </canvas>
+
+    <script>
+        var canvas = document.getElementById('myCanvas'); //getting mycanvas from html and defining it as canvas
+        var ctx = canvas.getContext('2d'); //defining context
+
+        function colourCircle(x, y, r, sAngle, eAngle, c, f) {  //circles without stroke
+            ctx.beginPath(); 
+            ctx.arc(x,y,r,sAngle,eAngle, c);
+            ctx.fillStyle = f;
+            ctx.fill();
+        }
+
+        ctx.beginPath();
+        ctx.rect(0,0,1500,750);
+        ctx.fillStyle = "#9b216c";
+        ctx.fill();
+
+        colourCircle(550,375,126,1.57,1.5 * Math.PI, false, "#fec93f"); //left body curve
+        colourCircle(950,375,126,1.57,1.5 * Math.PI, true, "#0e3441");  //right body curve
+
+        ctx.beginPath(); //main body
+        ctx.moveTo(550,249);
+        ctx.lineTo(950,249);
+        ctx.lineTo(950,501);
+        ctx.lineTo(550,501);
+        ctx.lineTo(550,250);
+        ctx.fillStyle = "#fec93f";
+        ctx.fill();
+        ctx.closePath();
+    </script>
+    
+</body>
+</html>
